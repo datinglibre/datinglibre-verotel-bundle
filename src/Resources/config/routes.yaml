@@ -1,0 +1,4 @@
+verotel_postback:
+  controller: DatingLibre\VerotelBundle\Controller\VerotelPostbackController::postback
+  path: /webhook/verotel
+  methods: GET|POST

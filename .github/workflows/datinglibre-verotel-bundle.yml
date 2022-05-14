@@ -1,0 +1,42 @@
+name: datinglibre-verotel-bundle GitHub CI
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/README.md'
+jobs:
+  build:
+    name: Symfony (PHP ${{ matrix.php-versions }})
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: true
+      matrix:
+        php-versions: ['8.1']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.11.0
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_pgsql, dom, filter, gd, iconv, json, mbstring, pdo, snmp
+          tools: phpunit
+        env:
+          update: true
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run phpunit
+        run: ./bin/phpunit
+
+      - name: Run psalm
+        run: ./vendor/bin/psalm

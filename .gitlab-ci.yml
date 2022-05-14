@@ -1,0 +1,21 @@
+image: datinglibre/ci-unit:latest
+
+stages:
+  - test
+
+test-job:
+  variables:
+    GIT_CHECKOUT: "true"
+  only:
+    - master
+  except:
+    changes:
+      - "**/*.md"
+
+  stage: test
+  script:
+    - php -v
+    - cd $CI_PROJECT_DIR && composer validate
+    - cd $CI_PROJECT_DIR && composer install
+    - cd $CI_PROJECT_DIR && ./bin/phpunit
+    - cd $CI_PROJECT_DIR && ./vendor/bin/psalm
