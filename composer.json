@@ -20,7 +20,7 @@
         "symfony/dotenv": "^5.0||^6.0",
         "psr/container": "^1.0",
         "verotel/flexpay-php-client": "^4.4",
-        "datinglibre/datinglibre-app-api": "1.0.*"
+        "datinglibre/datinglibre-app-api": "^1.0"
     },
     "autoload": {
         "psr-4": {
