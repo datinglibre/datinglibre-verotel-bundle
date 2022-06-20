@@ -34,7 +34,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "symfony/phpunit-bridge": "^5.3",
         "vimeo/psalm": "^4.15"
     },
